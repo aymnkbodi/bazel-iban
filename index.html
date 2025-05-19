@@ -2,44 +2,88 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Bazel IBAN</title>
+  <title>حسابات Bazel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
       text-align: center;
-      margin-top: 100px;
     }
+
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
     .iban {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    button {
       font-size: 18px;
-      padding: 10px 20px;
+      word-break: break-all;
+      margin: 10px 0;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
       cursor: pointer;
+      font-size: 22px;
+      color: #444;
+      transition: color 0.3s;
+    }
+
+    .copy-btn:hover {
+      color: #000;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .iban {
+        text-align: center;
+        font-size: 16px;
+      }
     }
   </style>
+
+  <!-- أيقونات -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <div class="section">
+  <h2>حسابات Bazel البنكية</h2>
+
+  <div class="card">
     <div class="iban" id="iban1">SA6310000001400025815606</div>
-    <button onclick="copyText('iban1')">نسخ رقم الايبان</button>
+    <button class="copy-btn" onclick="copyText('نسخ الايبان')">
+      <i class="fas fa-copy"></i>
+    </button>
   </div>
 
-  <div class="section">
+  <div class="card">
     <div class="iban" id="iban2">01400025815606</div>
-    <button onclick="copyText('iban2')">نسخ رقم الحساب</button>
+    <button class="copy-btn" onclick="copyText('نسخ رقم الحساب')">
+      <i class="fas fa-copy"></i>
+    </button>
   </div>
 
   <script>
-    function copyText(elementId) {
-      const text = document.getElementById(elementId).innerText;
+    function copyText(id) {
+      const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        alert("تم نسخ الآيبان بنجاح!");
+        alert("تم النسخ ✅");
       });
     }
   </script>
